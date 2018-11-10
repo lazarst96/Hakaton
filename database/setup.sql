@@ -12,7 +12,12 @@ create table user (
 	email varchar(64) not null,
 	name varchar(64) not null,
 	password varchar(256),
-	citizen_id varchar(16) not null
+	citizen_id varchar(16) not null,
+	type int not null
+
+	-- type 0: doctor
+	-- type 1: patient
+	-- ??? type 2: admin ???
 );
 
 create table patient (

@@ -11,14 +11,14 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		if($this->session->userdata("user_data")){
-			if($this->session->user_data['type']==0){
+			if($this->session->user_data['type']==1){
 				redirect(base_url("doctor"));
 			}else{
 				redirect(base_url("patient"));
 			}
 		}
 		if($this->form_validation->run('login')){
-			if($this->session->user_data['type']==0){
+			if($this->session->user_data['type']==1){
 				redirect(base_url("doctor"));
 			}else{
 				redirect(base_url("patient"));

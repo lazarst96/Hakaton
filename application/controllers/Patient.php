@@ -23,6 +23,8 @@ class Patient extends CI_Controller {
 			"https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css",
 			"https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css"
 		);
+		$data["scripts"] = array(
+		);
 		$this->load->view("templates/header",$data);
 		$this->load->view("patient");
 		$data["scripts"] = array(

@@ -1,0 +1,206 @@
+*{
+	font-family: 'Quicksand', sans-serif;
+}
+
+html, body{
+	overflow-x: hidden;
+}
+
+p::selection{
+	color: #0abcbf;
+}
+
+.header {
+	padding: 15px;
+	z-index: 100;
+	background-color: #fff;
+}
+
+.log-in{
+	padding: 5px 15px;
+	background-color: #0abcbf !important;
+	border: none !important;
+	color: #fff;
+}
+
+.log-in:hover{
+	background-color: #12a1a4;
+}
+
+.modall-header{
+	padding: 15px;
+}
+
+.modal input{
+	border: 2px solid #0abcbf;
+}
+
+.modal input[type='submit']{
+	padding: 10px 20px !important;
+	background-color: #0abcbf;
+	color: #fff;
+	border: none !important;
+}
+
+.modal input[type='submit']:hover{
+	background-color: #12a1a4;
+}
+
+
+.front-image{
+	height: 70vh;
+	background-attachment: scroll;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	position: relative;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+.shade{
+	padding: 15px;
+	max-width: 100%;
+	width: 100%;
+	position: absolute;
+	height: 100%;
+	background-color: rgba(000, 000, 000, .6);
+}
+
+.shade h1{
+	color: #fff;
+}
+
+.shade p{
+	color: #fff;
+}
+
+.services{
+	padding: 60px 15px;
+}
+
+.service{
+	margin-top: 40px;
+}
+
+.service::first-child{
+	margin-top: 0px;
+}
+
+.service i{
+	color: #0abcbf;
+	font-size: 4rem;
+	margin-bottom: 20px;
+}
+
+.service h3{
+	margin-bottom: 20px;
+}
+
+.service p{
+	font-size: 1.1rem;
+}
+
+.paralax{
+	min-height: 70vh;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	position: relative;
+}
+
+.shade1{
+	margin-left: -15px;
+	padding:30px 15px; 
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(000, 000, 000, .7);
+}
+
+.shade1 h3{
+	color: #fff;
+}
+
+.shade1 p{
+	color: #fff;
+}
+
+.doctors{
+	padding: 60px 15px;
+	background-color: #f1f1f1;
+}
+
+.doctor{
+	margin-top: 40px;
+}
+
+.doctor::first-child{
+	margin-top: 0px;
+}
+
+.doctor h5{
+	margin-top: 10px; 
+	margin-bottom: 10px;
+}
+
+.footer{
+	padding: 30px 15px;
+	background-color: #041618;
+}
+
+.footer p{
+	margin-bottom: 0px;
+	color: #0abcbf;
+}
+
+
+
+@media (min-width: 567px){
+
+}
+
+@media (min-width: 768px){
+	
+	.front-image{
+		height: 60vh;
+		background-attachment: scroll;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		position: relative;
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+	}
+
+	.service{
+		margin-top: 0px;
+	}
+
+	.paralax{
+		min-height: 30vh;
+	}
+
+	.doctor{
+		margin-top: 0px;
+	}
+
+}
+
+@media (min-width: 992px){
+	.paralax{
+		min-height: 20vh;
+	}
+}
+
+@media (min-width: 1200px){
+
+}
+
+
+
+
+
+
+

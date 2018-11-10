@@ -5,6 +5,8 @@ class Home extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model("User_model","user");
+		$this->load->model("Doctor_model","doctor");
+		$this->error =false;
 	}
 	public function index()
 	{
@@ -25,15 +27,17 @@ class Home extends CI_Controller {
 		}
 		$data["title"] = "Početna";
 		$data["styles"] = array(
-			base_url("assets/css/home-page.css"),
-			base_url("assets/library/bootstrap/css/bootstrap.min.css")
+			"assets/css/home-page.css",
+			"assets/library/bootstrap/css/bootstrap.min.css"
 		);
 		$data["scripts"] = array(
-			base_url("assets/library/jquery/jquery.min.js"),
-			base_url("assets/library/bootstrap/js/bootstrap.min.js"),
+			"assets/library/jquery/jquery.min.js",
+			"assets/library/bootstrap/js/bootstrap.min.js",
 		);
 		$this->load->view("templates/header",$data);
-		$this->load->view("home");
+		$data['error'] = $this->error;
+		$data['doctors'] = $this->doctor->all();
+		$this->load->view("home",$data);
 		$data["scripts"] = array(
 			//base_url("assets/js/script.js"),
 		);
@@ -41,8 +45,8 @@ class Home extends CI_Controller {
 		
 	}
 	public function log_user($password){
-		$username = $this->input->post('email');
-		$row = $this->user->login($username,$password,$ip_address);
+		$email = $this->input->post('email');
+		$row = $this->user->login($email,$password);
 		if($row){
 			$session = array(
 				"id" => $row->id,
@@ -54,6 +58,7 @@ class Home extends CI_Controller {
 			return true;
 		}else{
 			$this->form_validation->set_message('log_user', 'Pogrešan E-mail ili lozinka.');
+			$this->error = true;
 			return false;
 		}
 	}

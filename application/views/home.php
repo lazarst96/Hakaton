@@ -1,4 +1,5 @@
 <!--// Navbar section -->
+
 	<div class="container-fluid header">
 		<div class="row">
 			<div class="container">
@@ -20,25 +21,26 @@
 
 
 	<!--// Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
+	<div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog"  role="document">
 			<div class="modal-content">
 				<div class="col-12 text-center modall-header">
 					<h5>Ulogujte se</h5>
 				</div>
 				<div class="modal-body">
 
-					<form action="#" method="POST">
+					<?=form_open()?>
 
-						<label for="username">Korisnicko Ime</label>
-						<input class="form-control" type="text" name="username" required>
+						<label for="username">E-mail</label>
+						<input class="form-control" type="text" name="email" required>
 						<br>
 						<label for="pwd">Lozinka</label>
-						<input class="form-control" type="text" name="password" required>
+						<input class="form-control" type="password" name="password" required>
 						<br>
 						<input class="btn btn-primary" type="submit" value="Log In">
+						<?=form_error('password', '<div class="font-weight-bold text-danger p-4">', '</div>')?>
 
-					</form>
+					<?=form_close()?>
 
 				</div>
 			</div>
@@ -106,26 +108,14 @@
 		<div class="row">
 			<div class="container">
 				<div class="row">
+					<?php foreach($doctors as $doctor):?>
 					<div class="col-12 col-sm-6 col-md-3 doctor">
-						<img class="img-fluid" src="assets/images/doctor1.jpg" alt="">
-						<h5>Stiven Darlington</h5>
+						<img class="img-fluid" src="assets/images/doctor/doctor<?=$doctor->id?>.jpg" alt="">
+						<h5><?=$doctor->name?></h5>
 						<p><i>-- Dermatolog</i></p>
 					</div>
-					<div class="col-12 col-sm-6 col-md-3 doctor">
-						<img class="img-fluid" src="assets/images/doctor2.jpg" alt="">
-						<h5>Marko Taskovic</h5>
-						<p><i>-- Dermatolog</i></p>
-					</div>
-					<div class="col-12 col-sm-6 col-md-3 doctor">
-						<img class="img-fluid" src="assets/images/doctor3.jpg" alt="">
-						<h5>Skocko nzm ime</h5>
-						<p><i>-- Dermatolog</i></p>
-					</div>
-					<div class="col-12 col-sm-6 col-md-3 doctor">
-						<img class="img-fluid" src="assets/images/doctor4.jpg" alt="">
-						<h5>Lazar Stamenkovic</h5>
-						<p><i>-- Dermatolog</i></p>
-					</div>
+					<?php endforeach?>
+					
 				</div>
 			</div>
 		</div>
@@ -144,6 +134,12 @@
 			</div>
 		</div>
 	</div>
-
-
+<?php if($error):?>
+<script type="text/javascript">
+	function mymodal(){
+        $('#exampleModal').modal('show');
+    }
+    mymodal();
+</script>
+<?php endif?>
 	

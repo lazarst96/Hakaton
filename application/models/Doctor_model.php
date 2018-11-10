@@ -24,6 +24,19 @@ class Doctor_model extends CI_Model{
 		);
 		$this->db->insert("reminder", $data);
 	}
+	public function all(){
+		$this->db->select("user.*");
+		$this->db->from("doctor");
+		$this->db->join("user","user.id=doctor.user_id","left");
+		$this->db->limit(8);
+
+		$query = $this->db->get();
+		if($query->num_rows()){
+			return $query->result();
+		}
+		return array();
+
+	}
 	public function change_period($therapy_id, $period){
 		$data = array(
 			"period" => $period,

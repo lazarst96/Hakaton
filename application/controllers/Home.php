@@ -25,10 +25,12 @@ class Home extends CI_Controller {
 		}
 		$data["title"] = "Početna";
 		$data["styles"] = array(
-			//base_url("assets/css/style.css"),
+			base_url("assets/css/home-page.css"),
+			base_url("assets/library/bootstrap/css/bootstrap.min.css")
 		);
 		$data["scripts"] = array(
-			//base_url("assets/css/style.css"),
+			base_url("assets/library/jquery/jquery.min.js"),
+			base_url("assets/library/bootstrap/js/bootstrap.min.js"),
 		);
 		$this->load->view("templates/header",$data);
 		$this->load->view("home");

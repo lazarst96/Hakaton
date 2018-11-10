@@ -26,7 +26,7 @@ class Patient_model extends CI_Model{
 		$date = date("Y-m-d H:i:s");
 		$date = new DateTime($date);
 		$date->modify(" + $period days");
-		
+
 		$data = array(
 			"therapy_id" => $insert_id,
 			"time" => $date->format('Y-m-d H:i:s'),
@@ -39,5 +39,19 @@ class Patient_model extends CI_Model{
 		);
 		$this->db->where("id", $id);
 		$this->db->update("reminder", $data);
+	}
+	public function all_archive($patient_id){
+		$this->db->select("therapy.*, user.name as doctor_name");
+		$this->db->from("therapy");
+		$this->db->join("doctor","doctor.user_id=therapy.doctor_id","left");
+		$this->db->join("user", "user.id=doctor.user_id", "left");
+		$this->db->where("therapy.patient_id",$patient_id);
+		$this->db->where("therapy.close_time IS NOT NULL");
+
+		$query = $this->db->get();
+		if($query->num_rows()){
+			return $query->result();
+		}
+		return array();
 	}
 }

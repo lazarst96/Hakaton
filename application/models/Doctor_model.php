@@ -32,7 +32,11 @@ class Doctor_model extends CI_Model{
 		$this->db->update("therapy", $data);
 	}
 	public function finish_therapy($therapy_id){
-		
+		$data = array(
+			"close_time" => date("Y-m-d H:i:s")
+		);
+		$this->db->where("id", $therapy_id);
+		$this->db->update("therapy", $data);
 	}
 
 }

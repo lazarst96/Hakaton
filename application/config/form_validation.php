@@ -21,4 +21,15 @@ $config = array(
 
         )
 	),
+	'add_report'=>array(
+		array(
+            'field' => 'desc',
+            'label' => 'Opis',
+			'rules' => 'trim',
+			'errors' => array(
+				'required' => "Ovo polje je obavezno."
+			)
+
+        )
+	),
 );

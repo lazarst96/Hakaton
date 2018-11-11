@@ -6,7 +6,7 @@
 				<div class="row">
 					<div class="col-12">
 						<nav class="navbar navbar-expand-lg">
-							<a class="navbar-brand" href="#">DermReport</a>
+							<a class="navbar-brand" href="<?=base_url()?>">DermReport</a>
 							<ul class="navbar-nav ml-auto">
 								<li class="nav-item">
 									<button class="btn btn-primary log-in" data-toggle="modal" data-target="#exampleModal">Log In</button>

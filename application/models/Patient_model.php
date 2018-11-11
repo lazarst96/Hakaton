@@ -3,18 +3,13 @@ class Patient_model extends CI_Model{
 	public function __construct(){
 		parent::__construct();
 	}
-	public function add_report($therapy_id, $desc, $images_src){
+	public function add_report($therapy_id, $desc){
 		$data = array(
 			"therapy_id" => $therapy_id,
-			"decription" => $desc
+			"description" => $desc
 		);
 		$this->db->insert("report",$data);
 		$insert_id = $this->db->insert_id();
-		$data = array();
-		foreach($images_src as $src){
-			array_push($data, array("source"=>$src, "report_id"=>$insert_id));
-		}
-		$this->db->insert_batch("image", $data);
 		$this->db->select("therapy.period");
 		$this->db->from("therapy");
 		$this->db->where("id",$therapy_id);
@@ -31,7 +26,11 @@ class Patient_model extends CI_Model{
 			"therapy_id" => $insert_id,
 			"time" => $date->format('Y-m-d H:i:s'),
 		);
+		$this->db->where("therapy_id",$therapy_id);
+		$this->db->delete("reminder");
+
 		$this->db->insert("reminder", $data);
+		return $insert_id;
 	}
 	public function visit_reminder($id){
 		$data = array(
@@ -54,4 +53,53 @@ class Patient_model extends CI_Model{
 		}
 		return array();
 	}
+	public function all_active($patient_id){
+		$this->db->select("therapy.*, user.name as doctor_name, reminder.time as deadline");
+		$this->db->from("therapy");
+		$this->db->join("doctor","doctor.user_id=therapy.doctor_id","left");
+		$this->db->join("user", "user.id=doctor.user_id", "left");
+		$this->db->join("reminder","reminder.therapy_id = therapy.id","left");
+		$this->db->where("therapy.patient_id",$patient_id);
+		$this->db->where("therapy.close_time IS NULL");
+
+		$query = $this->db->get();
+		if($query->num_rows()){
+			return $query->result();
+		}
+		return array();
+	}
+	public function therapy($therapy_id){
+		$this->db->select("therapy.*, user.name as doctor, reminder.time as deadline");
+		$this->db->from("therapy");
+		$this->db->join("doctor","doctor.user_id=therapy.doctor_id","left");
+		$this->db->join("user","user.id=doctor.user_id","left");
+		$this->db->join("reminder","reminder.therapy_id=therapy.id","left");
+		$this->db->where("therapy.id",$therapy_id);
+
+		$query = $this->db->get();
+		if($query->num_rows()){
+			return $query->row();
+		}
+		return false;
+	}
+	public function history($therapy_id){
+		$this->db->select("report.*");
+		$this->db->from("report");
+		$this->db->where("report.therapy_id",$therapy_id);
+
+		$query = $this->db->get();
+		if($query->num_rows()){
+			return $query->result();
+		}
+		return array();
+	}
+	public function images_for_report($id){
+		if(file_exists("assets/images/report/".$id))
+			return directory_map("assets/images/report/".$id,1,false);
+		return array();
+	}
+	public function set_dir($id){
+		rename("assets/images/report/tmp", "assets/images/report/".$id);
+	}
+
 }

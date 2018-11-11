@@ -1,0 +1,107 @@
+*{
+	font-family: 'Quicksand', sans-serif;
+}
+
+html, body{
+	overflow-x: hidden;
+}
+
+.patient-header{
+	padding: 20px 15px;
+	background-color: #0abcbf;
+}
+
+.patient-header h6{
+	color: #fff;
+}
+
+.patient-header a{
+	margin-right: 20px;
+	color: #fff;
+	margin-bottom: 0px;
+	text-decoration: none !important;
+}
+
+.patient-header a:hover{
+	color: #eaeaea;
+}
+
+.patient-header span{
+	margin-right: 5px;
+}
+
+.left-side{
+	padding: 10px 0px;
+	border-right: 1px solid #c5c5c5;
+	height: 100vh;
+	-webkit-box-shadow: -6px 2px 17px 0px rgba(84,84,84,1);
+-moz-box-shadow: -6px 2px 17px 0px rgba(84,84,84,1);
+box-shadow: -6px 2px 17px 0px rgba(84,84,84,1);
+}
+
+.left-side h4{
+	margin-bottom: 30px;
+}
+
+.seek{
+	padding: 10px 15px;
+	background-color: #ffffff;
+}
+
+.seek1{
+	padding: 10px 15px;
+	background-color: #ff9595;
+}
+
+.left-side li{
+	padding-top: 5px;
+	padding-bottom: 5px; 
+	color: #000;
+}
+
+.left-side li:nth-child(1){
+	width: 48%;
+}
+
+.left-side li:nth-child(2){
+	width: 48%;
+}
+
+.left-side:nth-child(3){
+	width: 100%;
+}
+
+.right-side{
+	padding: 20px 15px;
+}
+
+.right-side-first b{
+	margin-right: 10px;
+}
+
+
+.right-side-second textarea{
+	resize: none;
+	border: 1px solid #0abcbf;
+}
+
+.right-side-second input{
+	border: 1px solid #0abcbf;
+}
+
+.right-side-second input[type="submit"]{
+	background-color: #0abcbf;
+	padding: 5px 30px;
+	color: #fff;
+}
+
+.right-side-bottom{
+	padding: 20px 15px;
+}
+
+.right-side-bottom-second{
+	padding: 25px 15px;
+}
+
+
+

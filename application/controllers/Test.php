@@ -11,7 +11,7 @@ class Test extends CI_Controller {
 	}
 	public function index()
 	{
-		echo $this->mail->send_welcome_message("lazar.stamenkovic@pmf.edu.rs","asd67sad");
+		echo $this->mail->send_warning_message("lazar.stamenkovic@pmf.edu.rs","Vase stanje se pogorsalo","Laza Lazic", "Akne na licu");
 
 	}
 }

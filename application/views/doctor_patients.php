@@ -77,7 +77,7 @@
         <div class="row">
           <?php if(!count($active)):?>
                         <p class="p-3">Nema terapija u toku</p>
-                    <?php endif?>
+          <?php endif?>
           <?php foreach ($active as $t):?>
                     <div class='<?=(is_critical($t->deadline)?"col-12 seek1":"col-12 seek")?>'>
                         <ul class="list-inline">

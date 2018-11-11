@@ -20,15 +20,12 @@
                     <ul class="nav flex-column col-12">
                         <li class="nav-item">
                             <a class="nav-link" href="<?=base_url("doctor/add_patient/")?>">Dodaj Pacijenta</a>
-                          </li>
+                        </li>
                           <li class="nav-item">
                             <a class="nav-link" href="<?=base_url("doctor/add_therapy/")?>">Dodaj Terapiju</a>
                           </li>
                           <li class="nav-item">
                             <a class="nav-link" href="<?=base_url("doctor/patient/")?>">Pacijenti</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link " href="<?=base_url("doctor/therapy")?>">Terapije</a>
                           </li>
                     </ul>
                 </div>
@@ -52,15 +49,18 @@
                         </div>
                         <?=form_open()?>
                             <label for="period">Perioda</label><br>
-                            <input type="number" name="period" value="3" id="period">dana<br>
+                            <input type="number" name="perioda" value="3" id="period">dana<br>
                             <lable for="finish">Zaključi terapiju:</lable>
                             <input type="checkbox" name='finish' id="finish"><br>
                             <lable for="finish">Pozovi pacijenta na pregled:</lable>
-                            <input type="checkbox" name='finish' id="finish"><br>
+                            <input type="checkbox" name='call' id="finish"><br>
                             <input class="btn btn-default" type="submit" value="Save">
                         <?=form_close()?>
                     </div>
                     <hr>
+                    <?php if(!count($history)):?>
+                        <p class="p-3">Nema dodatih stanja</p>
+                    <?php endif?>
                     <?php foreach($history as $key => $report):?>
                         <div class="row col-12">
                             <?php foreach ($images[$key] as $src):?>

@@ -58,5 +58,13 @@ class Doctor_model extends CI_Model{
 		$query = $this->db->get();
 		return $query->result();
 	}
+	public function for_mail($therapy_id){
+		$this->db->select("therapy.*,user.email");
+		$this->db->from("therapy");
+		$this->db->join("user","user.id=therapy.patient_id","left");
+		$this->db->where("therapy.id",$therapy_id);
+
+		return $this->db->get()->row();
+	}
 
 }

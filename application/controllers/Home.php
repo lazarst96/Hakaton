@@ -23,7 +23,6 @@ class Home extends CI_Controller {
 			}else{
 				redirect(base_url("patient"));
 			}
-			
 		}
 		$data["title"] = "Početna";
 		$data["styles"] = array(

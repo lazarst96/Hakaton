@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2018 at 08:16 AM
+-- Generation Time: Nov 11, 2018 at 10:38 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -76,7 +76,11 @@ CREATE TABLE `reminder` (
 --
 
 INSERT INTO `reminder` (`id`, `therapy_id`, `time`, `visited`) VALUES
-(1, 4, '2018-11-14 05:27:14', NULL);
+(2, 5, '2018-11-14 09:15:44', NULL),
+(3, 6, '2018-11-18 09:19:09', NULL),
+(4, 19, '2018-11-14 09:21:55', NULL),
+(6, 20, '2018-11-14 09:24:17', NULL),
+(7, 1, '2018-11-15 23:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -97,23 +101,14 @@ CREATE TABLE `report` (
 
 INSERT INTO `report` (`id`, `therapy_id`, `time`, `description`) VALUES
 (1, 1, '2018-10-07 09:30:05', 'Sve ok, mazem atlex.'),
-(2, 1, '2018-10-10 09:30:05', 'Sve ok, mazem atlex.'),
-(3, 1, '2018-10-13 09:30:05', 'Sve ok, mazem atlex.'),
-(4, 1, '2018-10-16 09:30:05', 'Sve ok, mazem atlex.'),
-(5, 1, '2018-10-19 09:30:05', 'Sve ok, mazem atlex.'),
-(6, 1, '2018-10-22 09:30:05', 'Sve ok, mazem atlex.'),
-(7, 1, '2018-10-25 09:30:05', 'Sve ok, mazem atlex.'),
-(8, 1, '2018-10-28 10:30:05', 'Sve ok, mazem atlex.'),
-(9, 1, '2018-10-31 10:30:05', 'Sve ok, mazem atlex.'),
-(10, 1, '2018-11-03 10:30:05', 'Sve ok, mazem atlex.'),
-(11, 1, '2018-11-06 10:30:05', 'Sve ok, mazem atlex.'),
-(12, 1, '2018-11-09 10:30:05', 'Sve ok, mazem atlex.'),
 (13, 2, '2009-11-08 07:22:54', 'Izgleda isto kao pre. Danka'),
 (14, 2, '2010-11-08 07:22:54', 'Izgleda isto kao pre. Danka'),
 (15, 2, '2011-11-08 07:22:54', 'Izgleda isto kao pre. Danka'),
 (16, 2, '2012-11-08 07:22:54', 'Izgleda isto kao pre. Danka'),
 (17, 2, '2013-11-08 07:22:54', 'Izgleda drugacije, saljem sliku. Danka'),
-(18, 3, '2013-12-26 08:22:54', 'Dobro sam, malo me svrbe konci. Danka');
+(18, 3, '2013-12-26 08:22:54', 'Dobro sam, malo me svrbe konci. Danka'),
+(19, 4, '2018-11-11 09:21:55', 'Novo stanje'),
+(20, 4, '2018-11-11 09:24:16', 'Novo stanje');
 
 -- --------------------------------------------------------
 
@@ -140,7 +135,9 @@ INSERT INTO `therapy` (`id`, `patient_id`, `doctor_id`, `open_time`, `close_time
 (1, 1, 3, '2018-10-04 09:30:05', NULL, 'Atletsko stopalo', 'Pacijent ima atletsko stopalo. Prepisana je terapija preparatom atlex na svaka 3 dana.', 3),
 (2, 2, 3, '2009-11-05 07:22:54', '2013-11-23 14:05:13', 'Promena na melanomu', 'Pacijentu je preporuceno da prati promene na melanomu na levoj podlaktici jednom godisnje.', 365),
 (3, 2, 3, '2013-12-24 08:45:00', '2014-03-24 08:45:00', 'Operacija', 'Pracenje stanja posle operacije uklanjanja melanoma', 14),
-(4, 1, 3, '2018-11-11 05:27:14', NULL, 'Akne na licu', 'xvxcvxcvxcv', 3);
+(4, 1, 3, '2018-11-11 05:27:14', NULL, 'Akne na licu', 'xvxcvxcvxcv', 3),
+(5, 1, 3, '2018-11-11 09:15:44', '2018-11-11 09:15:44', 'Alergija', 'Blaga alergija na podlaktici', 3),
+(6, 2, 3, '2018-11-11 09:19:08', NULL, 'Akne na licu', 'Akne na licu, blago izražene', 7);
 
 -- --------------------------------------------------------
 
@@ -164,7 +161,14 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `email`, `name`, `password`, `citizen_id`, `type`) VALUES
 (1, 'dragisa4@eps.rs', 'Dragisa Stankovic', 'gaga1', '1104955730055', 0),
 (2, 'dankajov@ptt.rs', 'Danka Jovanovic', 'zucapariz', '0607956735044', 0),
-(3, 'zoran.kostic113@gmail.com', 'Zoran Kostic', '12345', '0511968730033', 1);
+(3, 'zoran.kostic113@gmail.com', 'Zoran Kostic', '12345', '0511968730033', 1),
+(4, 'lazar.stamenkovic@pmf.edu.rs', 'Lazar Stamenkovic', '12345', '3007996730048', 0),
+(5, 'mare@gmail.com', 'Marko Ranković', 'mare', '0404998760035', 0),
+(6, 'nikola@gmail.com', 'Nikola Mirković', 'nikola', '0404999730033', 0),
+(7, 'zare@gmail.com', 'Žarko Milošević', 'zare', '1206995730038', 0),
+(8, 'mile@gmail.com', 'Mile Milenković', 'mile', '1407991730033', 0),
+(9, 'igor@gmail.com', 'Igor Ignjatović', 'igor', '010199970077', 0),
+(10, 'stefan@gmail.com', 'Stefan Marković', 'stefan', '0101999730021', 0);
 
 --
 -- Indexes for dumped tables
@@ -202,25 +206,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `reminder`
 --
 ALTER TABLE `reminder`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `report`
 --
 ALTER TABLE `report`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `therapy`
 --
 ALTER TABLE `therapy`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

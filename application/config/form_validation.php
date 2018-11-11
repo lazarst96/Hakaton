@@ -61,4 +61,26 @@ $config = array(
 
         ),
 	),
+	'add_patient'=>array(
+        array(
+            'field' => 'email',
+            'label' => 'Email',
+			'rules' => 'trim|required|valid_email',
+			'errors' => array(
+				'required' => "Ovo polje je obavezno."
+			)
+
+        )
+	),
+	'change_patient'=>array(
+        array(
+            'field' => 'perioda',
+            'label' => 'Perioda',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required' => "Ovo polje je obavezno."
+			)
+
+        )
+	)
 );

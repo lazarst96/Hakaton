@@ -56,11 +56,11 @@
                   <?=form_close()?>
                   <?php if($flag == 0):?>
                   <p class="font-weight-bold-text-danger">
-                      Nije nađen pacijent sa datim matičnim brojem.
+                      Neuspesno dodavanje pacijenta.
                   </p>
                 <?php elseif($flag ==1):?>
                 <p class="font-weight-bold-text-danger">
-                      Uspešno ste dodali diagnozu pacijentu
+                      Uspešno ste dodali pacijenta.
                   </p>
                 <?php endif?>
                 </div>

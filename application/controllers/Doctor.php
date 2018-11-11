@@ -8,6 +8,8 @@ class Doctor extends CI_Controller {
 		$this->load->model("User_model","user");
 		$this->load->model("Doctor_model","doctor");
 		$this->load->helper("string");
+		$this->load->helper("user_helper");
+		$this->load->model("Mail_model","mail");
 	}
 	public function index()
 	{
@@ -38,6 +40,20 @@ class Doctor extends CI_Controller {
 			$therapy_id = -1;
 			$set_flag = False;
 
+		}
+		if($this->form_validation->run("change_therapy")){
+			$mail = $this->doctor->for_mail();
+			$finish = $this->input->post("finish");
+			$call = $this->input->post("call");
+			$call= (($call=="off")?false:true);
+			$finish = (($call=="off")?false:true);
+			echo $finish;
+			if($call){
+				$this->mail->send_warning_message($mail->email, "Vase stanje se pogorsalo", $this->session->user_data["name"],$mail->name);
+			}
+			if($finish){
+				$this->doctor->finish_therapy($therapy_id);
+			}
 		}
 		$data["title"] = $this->session->user_data["name"];
 		$data["styles"] = array(
@@ -103,18 +119,21 @@ class Doctor extends CI_Controller {
 		
 	}
 	private function add_pat(){
-		$email = $this->inpot->post("email");
-		$name = $this->inpot->post("name");
-		$phone = $this->inpot->post("telefon");
-		$maticni = $this->inpot->post("maticni");
+		$email = $this->input->post("email");
+		$name = $this->input->post("ime");
+		$maticni = $this->input->post("maticni");
 		$password = random_string('alnum',8);
-		$this->user->register($email, $name, $password, $maticni, $phone);
+		$this->mail->send_welcome_message($email,$password);
+		$this->user->register($email, $name, $password, $maticni);
 	}
 	public function add_patient()
 	{
 		$flag = 2;
-		if($this->form_validation->run("add_therapy")){
-			$flag = $this->add_thera();
+		if($this->form_validation->run("add_patient")){
+			$this->add_pat();
+			$flag = 1;
+		}else{
+			$flag = 0;
 		}
 		$data["title"] = $this->session->user_data["name"];
 		$data["styles"] = array(
@@ -139,6 +158,7 @@ class Doctor extends CI_Controller {
 	{
 		if($id==""){
 			$ima_id = false;
+			$id=-1;
 			$data["pacijent"] = array();
 			$data["archive"]= array();
 			$data["active"] = array();
@@ -163,7 +183,6 @@ class Doctor extends CI_Controller {
 		$data["ima_id"] = $ima_id;
 		$this->load->view("templates/header",$data);
 		$data["patients"] = $this->doctor->patients($this->session->user_data["id"]);
-		$data["active"] = 
 		$this->load->view("doctor_patients",$data);
 		$data["scripts"] = array(
 			//base_url("assets/js/script.js"),

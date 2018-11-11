@@ -15,7 +15,7 @@ class User_model extends CI_Model{
 		}
 		return false;
 	}
-	public function register($email, $name, $password, $citizen_id,$phone){
+	public function register($email, $name, $password, $citizen_id){
 		$data = array(
 			"email" => $email,
 			"name" => $name,

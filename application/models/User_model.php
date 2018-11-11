@@ -32,7 +32,19 @@ class User_model extends CI_Model{
 		$this->db->select("user.*");
 		$this->db->from("user");
 		$this->db->where("citizen_id",$citizen_id);
-		$this->db->where("type", $type);
+		$this->db->where("type", 0);
+
+		$query = $this->db->get();
+		if($query->num_rows()){
+			return $query->row();
+		}
+		return false;
+	}
+	public function exists($id){
+		$this->db->select("user.*");
+		$this->db->from("user");
+		$this->db->where("id",$id);
+		$this->db->where("type", 0);
 
 		$query = $this->db->get();
 		if($query->num_rows()){

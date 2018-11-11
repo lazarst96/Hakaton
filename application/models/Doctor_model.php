@@ -51,5 +51,12 @@ class Doctor_model extends CI_Model{
 		$this->db->where("id", $therapy_id);
 		$this->db->update("therapy", $data);
 	}
+	public function patients($id){
+		$this->db->select("*");
+		$this->db->from("user");
+		$this->db->where("type",0);
+		$query = $this->db->get();
+		return $query->result();
+	}
 
 }

@@ -32,4 +32,33 @@ $config = array(
 
         )
 	),
+	'add_therapy'=>array(
+        array(
+            'field' => 'diag',
+            'label' => 'Dijagnoza',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required' => "Ovo polje je obavezno."
+			)
+
+        ),
+        array(
+            'field' => 'detaljno',
+            'label' => 'Detaljan opis',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required' => "Ovo polje je obavezno."
+			)
+
+        ),
+        array(
+            'field' => 'perioda',
+            'label' => 'Perioda',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required' => "Ovo polje je obavezno."
+			)
+
+        ),
+	),
 );

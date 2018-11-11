@@ -69,11 +69,12 @@ class Patient_model extends CI_Model{
 		return array();
 	}
 	public function therapy($therapy_id){
-		$this->db->select("therapy.*, user.name as doctor, reminder.time as deadline");
+		$this->db->select("therapy.*, user.name as doctor, reminder.time as deadline, user1.name as patient");
 		$this->db->from("therapy");
 		$this->db->join("doctor","doctor.user_id=therapy.doctor_id","left");
 		$this->db->join("user","user.id=doctor.user_id","left");
 		$this->db->join("reminder","reminder.therapy_id=therapy.id","left");
+		$this->db->join("user as user1","user1.id=therapy.patient_id");
 		$this->db->where("therapy.id",$therapy_id);
 
 		$query = $this->db->get();

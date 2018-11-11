@@ -18,6 +18,9 @@
                         <h4>Terapija</h4>
                         <hr>
                     </div>
+                    <?php if(!count($active)):?>
+                        <p class="p-3">Nema terapija u toku</p>
+                    <?php endif?>
                     <?php foreach ($active as $t):?>
                     <div class='<?=(is_critical($t->deadline)?"col-12 seek1":"col-12 seek")?>'>
                         <ul class="list-inline">
@@ -92,18 +95,6 @@
                                 
                             </div>
                             <?php endforeach?>
-                            <div class="col-3">
-                                <img class="img-fluid" src="assets/images/derma2.jpg" alt="">
-                                
-                            </div>
-                            <div class="col-3">
-                                <img class="img-fluid" src="assets/images/derma3.jpg" alt="">
-                                
-                            </div>
-                            <div class="col-3">
-                                <img class="img-fluid" src="assets/images/derma4.jpg" alt="">
-                                
-                            </div>
 
                             <div class="col-8 right-side-bottom-second">
                                 <p><?=$report->description?></p>
